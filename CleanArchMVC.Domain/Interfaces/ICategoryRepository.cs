@@ -10,6 +10,9 @@ namespace CleanArchMVC.Domain.Interfaces
     public interface ICategoryRepository
     {
 
+        // Basic methods for performing CRUD
+        // Métodos básicos para a realização de CRUD
+
         Task<IEnumerable<Category>> GetAllCategoryAsync();
         Task<Category> GetCategoryByIdAsync(int? id);
         Task<Category> CreateCategoryAsync(Category category);
