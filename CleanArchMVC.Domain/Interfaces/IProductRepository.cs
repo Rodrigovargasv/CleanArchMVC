@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CleanArchMVC.Domain.Interfaces
 {
-    public interface IProductRespository
+    public interface IProductRepository
     {
 
         // Basic methods for performing CRUD
