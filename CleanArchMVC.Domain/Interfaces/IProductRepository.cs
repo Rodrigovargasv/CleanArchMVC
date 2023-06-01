@@ -11,7 +11,7 @@ namespace CleanArchMVC.Domain.Interfaces
     {
 
         // Basic methods for performing CRUD
-        // Métodos básicos para a realização de CRUD
+        // Métodos básico para a realização de CRUD
 
         Task<IEnumerable<Product>> GetAllProductAsync();
         Task<Product> GetByIdProductAsync(int? id);
