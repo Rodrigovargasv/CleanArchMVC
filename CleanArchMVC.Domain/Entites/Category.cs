@@ -1,15 +1,9 @@
 ﻿using CleanArchMVC.Domain.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CleanArchMVC.Domain.Entites
 {
     public sealed class Category : EntityBase
     {
-
         public string Name { get; private set; }
 
         public ICollection<Product> Products { get;}
@@ -34,6 +28,8 @@ namespace CleanArchMVC.Domain.Entites
             ValidationDomain(name);
         }
 
+        // Method to accomplish the domain validation
+        // Método para realizar a validação do dominínio
         public void ValidationDomain(string name)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(name),
