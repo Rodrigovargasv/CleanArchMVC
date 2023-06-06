@@ -35,7 +35,7 @@ namespace CleanArchMVC.Domain.Entites
             DomainExceptionValidation.When(string.IsNullOrEmpty(name),
                "The Name field is required");
             DomainExceptionValidation.When(name.Length < 3,
-                "The Name field has at least 3 characters");
+                "The name field must be greater than 3 characters");
 
             Name = name;
             

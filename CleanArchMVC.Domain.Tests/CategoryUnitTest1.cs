@@ -46,11 +46,8 @@ namespace CleanArchMVC.Domain.Tests
         {
             Action action = () => new Category(1, "Te");
             action.Should().Throw<CleanArchMVC.Domain.Validation.DomainExceptionValidation>()
-                .WithMessage("The Name field has at least 3 characters");
+                .WithMessage("The name field must be greater than 3 characters");
         }
-
-
-
 
     }
 }

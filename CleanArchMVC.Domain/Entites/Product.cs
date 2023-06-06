@@ -49,11 +49,11 @@ namespace CleanArchMVC.Domain.Entites
             DomainExceptionValidation.When(string.IsNullOrEmpty(name),
                 "The Name field is required");
             DomainExceptionValidation.When(name.Length < 3,
-                "The Name field has at least 3 characters");
-            DomainExceptionValidation.When(description.Length < 5, "" +
-                "The Description field has at least 3 characters");
+                "The name field must be greater than 3 characters");
+            DomainExceptionValidation.When(description.Length < 5,
+               "The description field must be greater than 5 characters");
             DomainExceptionValidation.When(price < 0,
-                "the value of the product cannot be less than 0");
+                "The value of the product cannot be less than 0");
             DomainExceptionValidation.When(string.IsNullOrEmpty(price.ToString()),
                 "The Price field is required");
             DomainExceptionValidation.When(string.IsNullOrEmpty(stock.ToString()),
