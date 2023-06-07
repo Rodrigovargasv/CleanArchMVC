@@ -17,6 +17,8 @@ namespace CleanArchMVC.Domain.Entites
 
         public int? Stock { get; private set; }
 
+        public DateTime? Created { get; private set; } = DateTime.Now;
+
         public Category Category;
         public int? CategoryId { get;  set; }
 
