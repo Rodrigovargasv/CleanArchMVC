@@ -1,3 +1,5 @@
+using CleanArchMVC.Infra.IoC;
+
 namespace CleanArchMVC.WebUI
 {
     public class Program
@@ -9,8 +11,13 @@ namespace CleanArchMVC.WebUI
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+            // Add dependency injection service
+            // Adiciona serviço de injeção de dependência
+            builder.Services.AddServices(builder.Configuration);
 
+            //AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
+            var app = builder.Build();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

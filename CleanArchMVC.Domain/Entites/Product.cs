@@ -13,33 +13,34 @@ namespace CleanArchMVC.Domain.Entites
 
         public string Description { get; private set; }
 
-        public decimal? Price { get; private set; }
+        public decimal Price { get; private set; }
 
-        public int? Stock { get; private set; }
-
-        public DateTime? Created { get; private set; } = DateTime.Now;
+        public int Stock { get; private set; }
 
         public Category Category;
-        public int? CategoryId { get;  set; }
+        public int CategoryId { get;  set; }
 
         // Constructor
         public Product(string name, string description, decimal price, int stock) 
         {
             ValidationDomain(name, description, price, stock);
         }
+
         public Product(int id, string name, string description, decimal price, int stock)
         {
             DomainExceptionValidation.When(id < 0,
                 "The id not can be 0");
+            Id = id;
             ValidationDomain(name, description, price, stock);
         }
 
 
         // Method to update the domain
         // Método para atualizar o domain
-        public void Update(string name, string description, decimal price, int stock)
+        public void Update(string name, string description, decimal price, int stock, int categoryId)
         {
             ValidationDomain(name, description, price, stock);
+            CategoryId = categoryId;
         }
 
 
@@ -65,6 +66,7 @@ namespace CleanArchMVC.Domain.Entites
             Description= description;
             Price= price;
             Stock= stock;
+           
 
         }
     }

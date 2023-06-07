@@ -1,11 +1,10 @@
-﻿
-
-using CleanArchMVC.Domain.Interfaces;
+﻿using CleanArchMVC.Domain.Interfaces;
 using CleanArchMVC.Infra.Data.Context;
 using CleanArchMVC.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 
 namespace CleanArchMVC.Infra.IoC
 {
@@ -23,6 +22,7 @@ namespace CleanArchMVC.Infra.IoC
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
             builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRespository>();

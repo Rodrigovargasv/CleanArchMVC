@@ -17,8 +17,7 @@ namespace CleanArchMVC.Infra.Data.EntityConfiguration
             builder.Property(p => p.Name).HasMaxLength(100).IsRequired();
             builder.Property(p => p.Description).HasMaxLength(200).IsRequired();
             builder.Property(p => p.Price).HasPrecision(10, 2);
-            builder.Property(p => p.Stock).HasDefaultValue(1).IsRequired();
-            builder.Property(p => p.Created).IsRequired();
+            builder.Property(p => p.Stock).IsRequired();
 
             builder.HasOne(e => e.Category).WithMany(e => e.Products).HasForeignKey(e => e.CategoryId);
         }

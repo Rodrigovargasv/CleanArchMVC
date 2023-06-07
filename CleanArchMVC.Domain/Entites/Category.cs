@@ -18,6 +18,7 @@ namespace CleanArchMVC.Domain.Entites
         public Category(int id, string name)
         {
             DomainExceptionValidation.When(id < 0, "The id not can be 0");
+            Id = id;
             ValidationDomain(name);
         }
 

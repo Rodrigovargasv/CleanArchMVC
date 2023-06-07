@@ -1,10 +1,5 @@
 ﻿using CleanArchMVC.Domain.Entites;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CleanArchMVC.Infra.Data.Context
 {
@@ -22,10 +17,10 @@ namespace CleanArchMVC.Infra.Data.Context
         // Configures the Fluent API template
         // Configura o modelo Fluent API
 
-        protected override void OnModelCreating(ModelBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(optionsBuilder);
-            optionsBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext)
+            base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext)
                 .Assembly);
         }
     }
