@@ -1,9 +1,4 @@
 ﻿using CleanArchMVC.Domain.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CleanArchMVC.Domain.Entites
 {
@@ -60,7 +55,7 @@ namespace CleanArchMVC.Domain.Entites
             DomainExceptionValidation.When(string.IsNullOrEmpty(price.ToString()),
                 "The Price field is required");
             DomainExceptionValidation.When(string.IsNullOrEmpty(stock.ToString()),
-                "The Price field is required");
+                "The Stock field is required");
 
             Name= name;
             Description= description;
