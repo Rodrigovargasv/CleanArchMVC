@@ -27,8 +27,8 @@ namespace CleanArchMVC.Application.Services
         #region Implementação de metados de busca, atualização e deleção de dados.
         public async Task DeleteCategoryDTOAsync(int? id)
         {
-            var deleteCategory = _mapper.Map<Category>(id);
-            await _categoryRepository.DeleteCategoryAsync(deleteCategory);
+            var categoryId = _categoryRepository.GetCategoryByIdAsync(id).Result;
+            await _categoryRepository.DeleteCategoryAsync(categoryId);
         }
 
         public async Task<IEnumerable<CategoryDTO>> GetAllCategoryDTOsAsync()

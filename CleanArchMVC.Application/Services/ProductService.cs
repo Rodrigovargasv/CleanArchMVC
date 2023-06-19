@@ -26,10 +26,9 @@ namespace CleanArchMVC.Application.Services
 
         public async Task DeleteProductDTOAsync(int? id)
         {
-            var deleteProduct = _mapper.Map<Product>(id);   
-            await _productRepository.DeleteProductAsync(deleteProduct);
+            var productId = _productRepository.GetByIdProductAsync(id).Result;
+            await _productRepository.DeleteProductAsync(productId);
         }
-
         public async Task<IEnumerable<ProductDTO>> GetAllProductDTOsAsync()
         {
             var getAllProducts = await _productRepository.GetAllProductAsync();
