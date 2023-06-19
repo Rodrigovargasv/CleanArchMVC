@@ -1,18 +1,16 @@
 ﻿using CleanArchMVC.Application.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CleanArchMVC.Application.Interfaces
 {
     public interface ICategoryService
     {
+        // Contracts that will be implemented in the service folder
+        // Contratos que serão implementados na pasta serviço
+
         Task<IEnumerable<CategoryDTO>> GetAllCategoryDTOsAsync();
         Task<CategoryDTO> GetByIdCategoryDTOAsync(int? id);
-        Task<CategoryDTO> CreateCategoryDTO(CategoryDTO categoryDTO);
-        Task<CategoryDTO> UpdateCategoryDTOAsync(CategoryDTO categoryDTO);
-        Task<CategoryDTO> DeleteCategoryDTOAsync(int? id);
+        Task CreateCategoryDTOAsync(CategoryDTO categoryDTO);
+        Task UpdateCategoryDTOAsync(CategoryDTO categoryDTO);
+        Task DeleteCategoryDTOAsync(int? id);
     }
 }
