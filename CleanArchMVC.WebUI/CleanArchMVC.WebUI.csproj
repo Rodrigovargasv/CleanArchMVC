@@ -17,8 +17,4 @@
     <ProjectReference Include="..\CleanArchMVC.Infra.IoC\CleanArchMVC.Infra.IoC.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Product\" />
-  </ItemGroup>
-
 </Project>
