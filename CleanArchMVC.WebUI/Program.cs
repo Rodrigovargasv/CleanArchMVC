@@ -11,13 +11,17 @@ namespace CleanArchMVC.WebUI
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+ 
             // Add dependency injection service
             // Adiciona serviço de injeção de dependência
             builder.Services.AddServices(builder.Configuration);
+            //builder.Services.AddAutoMapper(builder);
 
             // Add Automapper service
             // Adicionar serviço Automapper
             //builder.Services.AddAutoMapper(typeof());
+
+            builder.Services.AddEndpointsApiExplorer();
 
             //AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 

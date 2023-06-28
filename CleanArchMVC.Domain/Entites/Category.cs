@@ -6,7 +6,7 @@ namespace CleanArchMVC.Domain.Entites
     {
         public string Name { get; private set; }
 
-        public ICollection<Product> Products { get;}
+        public ICollection<Product>? Products { get;}
 
 
         // Constructor

@@ -1,4 +1,5 @@
 ﻿using CleanArchMVC.Application.Interfaces;
+using CleanArchMVC.Application.Mappings;
 using CleanArchMVC.Application.Services;
 using CleanArchMVC.Domain.Interfaces;
 using CleanArchMVC.Infra.Data.Context;
@@ -32,7 +33,7 @@ namespace CleanArchMVC.Infra.IoC
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
 
-            services.AddAutoMapper(typeof(ApplicationDbContext));
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
             return services;
 

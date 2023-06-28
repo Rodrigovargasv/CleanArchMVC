@@ -17,6 +17,8 @@ namespace CleanArchMVC.Application.Services
             _mapper = mapper;
         }
 
+
+        #region Implementação de metados de busca, atualização e deleção de dados.
         public async Task CreateCategoryDTOAsync(CategoryDTO categoryDTO)
         {
             var createdCategory = _mapper.Map<Category>(categoryDTO);
@@ -24,7 +26,6 @@ namespace CleanArchMVC.Application.Services
             
         }
 
-        #region Implementação de metados de busca, atualização e deleção de dados.
         public async Task DeleteCategoryDTOAsync(int? id)
         {
             var categoryId = _categoryRepository.GetCategoryByIdAsync(id).Result;

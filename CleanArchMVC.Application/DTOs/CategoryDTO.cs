@@ -1,6 +1,6 @@
 ﻿using CleanArchMVC.Domain.Entites;
 using System.ComponentModel.DataAnnotations;
-
+using System.Text.Json.Serialization;
 
 namespace CleanArchMVC.Application.DTOs
 {
@@ -13,6 +13,9 @@ namespace CleanArchMVC.Application.DTOs
         [MaxLength(100)]
         public string Name { get;  set; }
 
-        public ICollection<Product> Products { get; }
+        [JsonIgnore]
+        public ICollection<Product>? Produtos { get; set; }
+
+
     }
 }
