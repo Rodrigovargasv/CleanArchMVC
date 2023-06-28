@@ -13,9 +13,6 @@ namespace CleanArchMVC.Application.DTOs
         [MaxLength(100)]
         public string Name { get;  set; }
 
-        [JsonIgnore]
-        public ICollection<Product>? Produtos { get; set; }
-
 
     }
 }

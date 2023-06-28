@@ -1,5 +1,4 @@
 ﻿using CleanArchMVC.Domain.Entites;
-
 namespace CleanArchMVC.Domain.Interfaces
 {
     public interface ICategoryRepository
