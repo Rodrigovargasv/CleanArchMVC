@@ -12,7 +12,7 @@ namespace CleanArchMVC.WebUI.Controllers
         {
             _categoryService = categoryService;
 
-            
+
         }
 
         [HttpGet]
@@ -20,7 +20,7 @@ namespace CleanArchMVC.WebUI.Controllers
         {
             var categories = await _categoryService.GetAllCategoryDTOsAsync();
             return View(categories);
-          
+
         }
 
         [HttpGet()]
@@ -48,11 +48,11 @@ namespace CleanArchMVC.WebUI.Controllers
 
             var categoryDTO = await _categoryService.GetByIdCategoryDTOAsync(id);
 
-            if (categoryDTO == null) return NotFound();    
+            if (categoryDTO == null) return NotFound();
 
             return View(categoryDTO);
-            
-            
+
+
         }
 
         [HttpPost]
@@ -71,6 +71,27 @@ namespace CleanArchMVC.WebUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(categoryDTO);
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var categoryDTO = await _categoryService.GetByIdCategoryDTOAsync(id);
+
+            if (categoryDTO == null) return NotFound();
+
+            return View(categoryDTO);
+
+        }
+
+        [HttpPost(), ActionName("Delete")]
+        public async Task<ActionResult> DeleteConfirme(int? id)
+        {
+            await _categoryService.DeleteCategoryDTOAsync(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
