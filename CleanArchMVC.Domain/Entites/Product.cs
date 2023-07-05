@@ -12,7 +12,7 @@ namespace CleanArchMVC.Domain.Entites
 
         public int Stock { get; private set; }
 
-        public Category Category;
+        public Category? Category;
         public int CategoryId { get;  set; }
 
         // Constructor
@@ -45,6 +45,8 @@ namespace CleanArchMVC.Domain.Entites
         {
 
             DomainExceptionValidation.When(string.IsNullOrEmpty(name),
+                "The Name field is required");
+            DomainExceptionValidation.When(string.IsNullOrEmpty(description),
                 "The Name field is required");
             DomainExceptionValidation.When(name.Length < 3,
                 "The name field must be greater than 3 characters");

@@ -6,7 +6,7 @@ namespace CleanArchMVC.Application.DTOs
 {
     public class CategoryDTO
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "The Name field is required")]
         [MinLength(3)]
