@@ -1,5 +1,6 @@
 ﻿using CleanArchMVC.Application.DTOs;
 using CleanArchMVC.Application.Interfaces;
+using CleanArchMVC.Domain.Entites;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -48,6 +49,35 @@ namespace CleanArchMVC.WebUI.Controllers
                 return View();
             }
             
+        }
+
+
+        [HttpGet()]
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var productDTO = await _productService.GetByIdProductDTOAsync(id);
+
+            if (productDTO == null) return NotFound();
+
+            var categories = await _categoryService.GetAllCategoryDTOsAsync();
+
+            ViewBag.CategoryId = new SelectList(categories, "Id","Name", productDTO.CategoryId);
+
+            return View(productDTO);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(ProductDTO productDTO)
+        {
+            if (ModelState.IsValid) 
+            {
+                await _productService.UpdateProductDTOAsync(productDTO);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(productDTO);
         }
     }
 }
