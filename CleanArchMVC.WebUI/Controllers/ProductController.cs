@@ -68,7 +68,6 @@ namespace CleanArchMVC.WebUI.Controllers
             return View(productDTO);
         }
 
-
         [HttpPost]
         public async Task<ActionResult> Edit(ProductDTO productDTO)
         {
@@ -78,6 +77,38 @@ namespace CleanArchMVC.WebUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(productDTO);
+        }
+
+        [HttpGet()]
+        public async Task<ActionResult> Delete (int? id)
+        {
+            if (id == null) return NotFound();
+
+            var product = await _productService.GetByIdProductDTOAsync(id);
+
+            if (product == null) return NotFound();
+
+            return View(product);
+        }
+
+        [HttpPost(), ActionName("Delete")]
+        public async Task<ActionResult> DeleteConfirmed(int? id)
+        {
+            await _productService.DeleteProductDTOAsync(id);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Details(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var product = await _productService.GetByIdProductDTOAsync(id);
+
+            if (product == null) return NotFound();
+
+            return View(product);
         }
     }
 }
