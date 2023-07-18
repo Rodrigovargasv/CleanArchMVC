@@ -1,5 +1,4 @@
 ﻿using CleanArchMVC.Domain.Interfaces;
-using CleanArchMVC.WebUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchMVC.WebUI.Controllers
@@ -14,63 +13,21 @@ namespace CleanArchMVC.WebUI.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult Login(string returnUrl)
-        {
-            return View(new LoginViewModel()
-            {
-                ReturnUrl = returnUrl
-            });
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Login(LoginViewModel model)
-        {
-            var result = await _authenticate.Authenticate(model.Email, model.Password);
-
-            if (result)
-            {
-                if (string.IsNullOrEmpty(model.ReturnUrl))
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                return Redirect(model.ReturnUrl);
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.(password must be strong)");
-                return View(model);
-            }
-        }
-
-
 
         [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
+        public IActionResult Register() { }
 
         [HttpPost]
-        public async Task<ActionResult> Register(RegisterViewModel model) 
-        {
-            var result = await _authenticate.RegisterUser(model.Email, model.Password);
+        public async Task<ActionResult> Register(RegisterViewModel model) { }
 
-            if (result)
-                return Redirect("/");
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Invalid register attempt (password must be strong.)");
-                return View(model); 
-            }
-            
-        }
+        [HttpGet]
+        public ActionResult Login() {  }
 
-        public async Task<ActionResult> Logout() 
-        {
-            await _authenticate.Logout();
-            return Redirect("/Account/login");
-        }
+        [HttpPost]
+        public async Task<ActionResult> Login(LoginViewModel model) { }
+
+
+        public async Task<ActionResult> Logout() { }
         
     }
 }
