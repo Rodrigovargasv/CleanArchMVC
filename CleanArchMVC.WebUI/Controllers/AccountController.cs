@@ -52,7 +52,7 @@ namespace CleanArchMVC.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register(RegisterViewModel model) 
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             var result = await _authenticate.RegisterUser(model.Email, model.Password);
 
@@ -61,16 +61,16 @@ namespace CleanArchMVC.WebUI.Controllers
             else
             {
                 ModelState.AddModelError(string.Empty, "Invalid register attempt (password must be strong.)");
-                return View(model); 
+                return View(model);
             }
-            
+
         }
 
-        public async Task<ActionResult> Logout() 
+        public async Task<ActionResult> Logout()
         {
             await _authenticate.Logout();
             return Redirect("/Account/login");
         }
-        
+
     }
 }
