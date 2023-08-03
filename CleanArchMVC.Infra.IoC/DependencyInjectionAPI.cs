@@ -1,4 +1,5 @@
-﻿using CleanArchMVC.Application.Interfaces;
+﻿
+using CleanArchMVC.Application.Interfaces;
 using CleanArchMVC.Application.Mappings;
 using CleanArchMVC.Application.Services;
 using CleanArchMVC.Domain.Interfaces;
@@ -10,20 +11,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-
-
 namespace CleanArchMVC.Infra.IoC
 {
-    public static class DependencyInjection
+    public static class DependencyInjectionAPI
     {
-
-        // Set the dependency injection service to correctly communicate with the entire project and database.
-        // Performing the inversion of control.
-
-        // Define o serviço de injeção de dependência para comunicação correta como todo o projeto e banco de dados.
-        // Realizando a inversão de controle.
-
-        public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructureAPI(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
@@ -34,11 +26,6 @@ namespace CleanArchMVC.Infra.IoC
             services.AddIdentity<ApplicationUser, IdentityRole>()
                .AddEntityFrameworkStores<ApplicationDbContext>()
                .AddDefaultTokenProviders();
-
-            // serviços de cookie
-            // cookie services
-            services.ConfigureApplicationCookie(options => 
-            options.AccessDeniedPath = "/Account/Login");
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
@@ -56,10 +43,6 @@ namespace CleanArchMVC.Infra.IoC
 
 
             return services;
-
-
         }
-
-       
     }
 }
