@@ -38,7 +38,7 @@ namespace CleanArchMVC.WebUI.Controllers
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.(password must be strong)");
+                ModelState.AddModelError(string.Empty, "Invalid login attempt");
                 return View(model);
             }
         }
@@ -69,7 +69,7 @@ namespace CleanArchMVC.WebUI.Controllers
         public async Task<ActionResult> Logout()
         {
             await _authenticate.Logout();
-            return Redirect("/Account/login");
+            return Redirect("/Account/Login");
         }
 
 

@@ -1,3 +1,4 @@
+using CleanArchMVC.Domain.Interfaces;
 using CleanArchMVC.Infra.IoC;
 
 namespace CleanArchMVC.WebUI
@@ -15,6 +16,7 @@ namespace CleanArchMVC.WebUI
             // Add dependency injection service
             // Adiciona serviço de injeção de dependência
             builder.Services.AddServices(builder.Configuration);
+
             //builder.Services.AddAutoMapper(builder);
 
             // Add Automapper service
@@ -39,6 +41,20 @@ namespace CleanArchMVC.WebUI
 
             app.UseRouting();
 
+            // Added user creation and update service
+            // Adicionado serviço de criação e atualização de usuários
+
+            using (var serviceScope = app.Services.CreateScope())
+            {
+                var services = serviceScope.ServiceProvider;
+
+                var seedUserRoleInitial = services.GetRequiredService<ISeedUserRoleInitial>();
+
+                seedUserRoleInitial.SeedRoles();
+                seedUserRoleInitial.SeedUsers();
+            }
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
@@ -46,6 +62,8 @@ namespace CleanArchMVC.WebUI
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
+
+
         }
     }
 }

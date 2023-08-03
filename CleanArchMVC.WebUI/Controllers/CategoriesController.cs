@@ -1,9 +1,11 @@
 ﻿using CleanArchMVC.Application.DTOs;
 using CleanArchMVC.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchMVC.WebUI.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private ICategoryService _categoryService;
@@ -41,6 +43,7 @@ namespace CleanArchMVC.WebUI.Controllers
         }
 
 
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         public async Task<ActionResult> Edit(int? id)
         {
@@ -55,6 +58,7 @@ namespace CleanArchMVC.WebUI.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult> Edit(CategoryDTO categoryDTO)
         {
@@ -74,6 +78,7 @@ namespace CleanArchMVC.WebUI.Controllers
         }
 
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult> Delete(int? id)
         {
@@ -87,6 +92,7 @@ namespace CleanArchMVC.WebUI.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost(), ActionName("Delete")]
         public async Task<ActionResult> DeleteConfirme(int? id)
         {
